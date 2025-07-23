@@ -7,7 +7,7 @@ const Header = () => {
             <span className='text-gray-600 text-lg font-mono'>Stackit</span>
         </div>
         {/* credentials : login, sign up, or any other utilities */}
-        <div>
+        <div className=' flex items-center gap-3'>
             <button className='bg-blue-700 text-white rounded-sm px-[10px] py-[5px] cursor-pointer'>Login</button>
         </div>
     </div>
