@@ -4,3 +4,8 @@
 .scrollbar-hide::-webkit-scrollbar{
     display: none;
 }
+
+/* .tox-tinymce{
+    width: 80% !important;
+    box-sizing: border-box;
+} */
