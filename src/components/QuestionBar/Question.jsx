@@ -1,8 +1,8 @@
 const Question = () => {
   return (
-    <div className="container border-2 p-4 my-[3%] mx-[10%] max-w-[80%] max-h-[150px] text-white">
+    <div className="border-slate-800 container border-y-2 p-4 my-[3%] mx-[10%] max-w-[80%] max-h-[150px] ">
       <div className="upper flex max-h-1/4 mb-1.5 gap-[20px]">
-        <div className="title w-9/10 overflow-hidden text-ellipsis whitespace-nowrap">
+        <div className="title w-9/10 overflow-hidden text-ellipsis whitespace-nowrap text-blue-700">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas
           consectetur ipsa cumque quibusdam vero corrupti, harum necessitatibus
           explicabo cupiditate blanditiis?
@@ -19,7 +19,7 @@ const Question = () => {
             <div className="tag border px-1.5 rounded-md">tag2</div>
             <div className="tag border px-1.5 rounded-md">tag2</div>
           </div>
-          <div className="username text-center overflow-hidden text-ellipsis whitespace-nowrap  ">John Doe </div>
+          <div className="username text-center overflow-hidden text-ellipsis whitespace-nowrap text-blue-600 ">John Doe </div>
         </div>
         <div className="right max-h-full">
           <div className="description overflow-hidden text-ellipsis max-w-[100%] max-h-full line-clamp-3 leading-tight text-justify">

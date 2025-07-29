@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
-
 .scrollbar-hide::-webkit-scrollbar{
     display: none;
 }
-
+body{
+    backdrop-filter: blur(8px);
+}
 /* .tox-tinymce{
     width: 80% !important;
     box-sizing: border-box;

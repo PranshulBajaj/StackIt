@@ -1,8 +1,5 @@
 const tags = [
-    {
-        id : 1,
-        desc : 'Ask New Question'
-    },
+
     {
         id : 2,
         desc : 'Recently Asked'
