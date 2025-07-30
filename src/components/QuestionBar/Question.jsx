@@ -12,7 +12,7 @@ const Question = () => {
         </div>
       </div>
       <div className="lower flex gap-[20px] max-h-20  h-fit">
-        <div className="left max-w-[20%] min-w-[100px] flex flex-col justify-between"> 
+        <div className="left max-w-[20%] min-w-[100px] flex flex-col justify-between">
           <div className="tags flex gap-2 mt-1 overflow-scroll scrollbar-hide ">
             <div className="tag border px-1.5 rounded-md">tag1</div>
             <div className="tag border px-1.5 rounded-md">tag2</div>

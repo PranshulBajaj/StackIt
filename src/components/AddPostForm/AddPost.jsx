@@ -14,7 +14,6 @@ const AddPost = () => {
                     </div>
                     <div className='flex flex-col items-start'>
                         <label className='text-[17px] my-1' htmlFor="desc">Description</label>
-                        {/* <textarea className='w-[100%] outline-none border-2 border-blue-400 px-2 py-1 rounded-sm ' name="desc" id="desc" />  */}
                         <SimpleEditor />
                     </div>
                     <div className='flex flex-col items-start'>

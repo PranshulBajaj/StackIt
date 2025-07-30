@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Tagbar from "./components/Tags/Tagbar";
 import AddPost from "./components/AddPostForm/AddPost";
 import Login from "./components/Login-Signup/Login";
+import IQuestions from "./components/QuestionBar/IQuestions.jsx";
 import Signup from "./components/Login-Signup/Signup";
 import { useState } from "react";
 
