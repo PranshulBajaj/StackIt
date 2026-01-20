@@ -16,7 +16,7 @@ const Tagbar = ({setView}) => {
                 {
                     tags.length > 0 ?
                         tags.map((tag) => (
-                                <div id={tag.id}>
+                                <div key={tag.id} id={tag.id}>
                                     <Tag content={tag.desc} />
                                 </div>
                         ))

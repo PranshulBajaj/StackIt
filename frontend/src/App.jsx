@@ -17,7 +17,7 @@ function App() {
       {view === "home" && (
         <>
           <Tagbar setView={setView} />
-          <Question />
+          <IQuestions/>
         </>
       )}
       {view === "add" && <AddPost />}

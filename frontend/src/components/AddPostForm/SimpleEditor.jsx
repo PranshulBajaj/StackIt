@@ -1,14 +1,13 @@
 import React, { useState, useRef } from 'react'
 import JoditEditor from 'jodit-react'
 
-const SimpleEditor = () => {
+const SimpleEditor = ({onContentChange}) => {
   const editor = useRef(null);
-  const [content, setContent] = useState('');
-  // console.log(content)
 
   const config = {
     readonly: false, // All editing features are enabled
     height: 400,
+    width: 500,
     toolbarSticky: false,
     toolbarAdaptive: false,
     showCharsCounter: true,
@@ -23,39 +22,15 @@ const SimpleEditor = () => {
       'strikethrough',
       '|',
       'ul',
-      'ol',
-      '|',
-      'outdent',
-      'indent',
-      '|',
-      'font',
-      'fontsize',
-      'brush',
-      'paragraph',
-      '|',
-      'image',
-      'table',
-      'link',
-      '|',
-      'align',
-      'undo',
-      'redo',
-      '|',
-      'hr',
-      'copyformat',
-      'fullsize',
-      'preview',
-      'print',
-      'source',
+      'ol'
     ],
   }
   return (
     <div className='text-black'>
         <JoditEditor
             ref={editor}
-            value={content}
             config={config}
-            onChange={()=>{}}
+            onBlur={newContent=>onContentChange(newContent)}
         />
     </div>
   )

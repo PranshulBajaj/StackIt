@@ -1,7 +1,20 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { IoSearch } from "react-icons/io5";
+import axios from "axios";
 
 const Header = ({ setView }) => {
+  const {user, isLoggedIn} = useSelector((state)=>state.auth);
+  const clearUser = async()=>{
+    try{
+      const data = await axios.post('/api/v1/users/logout', {}, {withCredentials: true});
+      console.log("Data from Header.jsx Logout: ",data);
+    }
+    catch(error){
+      console.log("Error from Header.jsx Logout: ", error);
+    }
+  }
+
   return (
     <div className="flex items-center max-w-full bg-white py-3 px-[20px] md:px-[70px] justify-between h-[10vh] border-b-2 border-slate-600">
       <div className="flex items-center gap-8">
@@ -30,17 +43,19 @@ const Header = ({ setView }) => {
       </div>
       {/* credentials : login, sign up, or any other utilities */}
       <div className=" flex items-center gap-3">
-        <button
+        {
+          isLoggedIn ? user : <button
           className="text-blue-700 border-1 border-blue-700  rounded-md px-[10px] py-[5px] cursor-pointer"
           onClick={() => setView("login")}
         >
           Log in
         </button>
+        }
         <button
-          className="border-blue-700 bg-blue-700 border-1 text-white rounded-md px-[10px] py-[5px] cursor-pointer"
-          onClick={() => setView("signup")}
+          className="text-blue-700 border-1 border-blue-700  rounded-md px-[10px] py-[5px] cursor-pointer"
+          onClick={clearUser}
         >
-          Sign up
+          Logout
         </button>
       </div>
     </div>

@@ -1,9 +1,6 @@
 import express from "express";
 import { connectdb } from "./db/index.js";
-
-const app = express();
-const port = process.env.PORT || 3000
-
+import { app } from "./app.js";
 
 app.get('/', (req,res)=>{
     res.send('working')
@@ -11,8 +8,8 @@ app.get('/', (req,res)=>{
 
 connectdb()
 .then(()=>{      
-    app.listen(port, ()=>{
-        console.log("Listening on PORT ", port);
+    app.listen(process.env.PORT, ()=>{
+        console.log("Listening on PORT ", process.env.PORT);
     })
 })
 .catch((error)=>{
