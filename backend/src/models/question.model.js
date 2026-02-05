@@ -12,7 +12,7 @@ const questionSchema = new Schema({
         trim: true
     },
     tags: {
-        type: [String],
+        type: String,
         lowercase: true,
         trim: true,
         index: true

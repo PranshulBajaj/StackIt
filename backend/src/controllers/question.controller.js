@@ -1,7 +1,6 @@
 import { ApiResponse } from "../utility/ApiResponse.js";
 import { ApiError } from "../utility/ApiError.js";
 import {Question} from "../models/question.model.js"
-import {User} from "../models/user.model.js"
 
 const post = async(req, res)=>{
     const {title, description, tags} = req.body;
@@ -10,16 +9,12 @@ const post = async(req, res)=>{
     ){
         throw new ApiError(400,"All fields are required!")
     }
-    console.log("Logging from question controller: ", title, description, tags);
-    console.log(req.user._id);
     const question = await Question.create({
         title,
         desc: description,
         tags,
         askedBy: req.user._id
     })
-
-    console.log(question);
 
     if(!question){
         throw new ApiError(500, "Some error occured!");
@@ -31,6 +26,26 @@ const post = async(req, res)=>{
     })
 }
 
+const getAllQuestions = async(req,res)=>{
+    const page = Number(req.query.page) || 1;
+    const dataPerPage = 5;
+    const skip = (page-1) * dataPerPage;
+
+    const totalData = await Question.countDocuments();
+    const data = await Question.find()
+                            .select("-_id title desc tags askedBy createdAt")
+                            .limit(dataPerPage)
+                            .skip(skip)
+                            .populate("askedBy", "username");
+
+    return res.status(200).json({
+        success : true,
+        total : data.length,
+        questions : data,
+    })
+}
+
 export {
-    post
+    post,
+    getAllQuestions
 }

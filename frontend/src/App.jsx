@@ -6,10 +6,14 @@ import AddPost from "./components/AddPostForm/AddPost";
 import Login from "./components/Login-Signup/Login";
 import IQuestions from "./components/QuestionBar/IQuestions.jsx";
 import Signup from "./components/Login-Signup/Signup";
-import { useState } from "react";
+// import Home from "./components/Home/Home.jsx";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import QuestionContainer from "./components/QuestionBar/QuestionContainer.jsx";
 
 function App() {
   const [view, setView] = useState("home");
+
   return (
     <>
      
@@ -17,9 +21,11 @@ function App() {
       {view === "home" && (
         <>
           <Tagbar setView={setView} />
-          <IQuestions/>
+          <QuestionContainer />
+          
         </>
       )}
+      {/* <Home/> */}
       {view === "add" && <AddPost />}
       {view == "login" && <Login setView={setView} />}
       {view == "signup" && <Signup setView={setView} />}

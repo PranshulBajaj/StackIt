@@ -24,8 +24,9 @@ const Login = ({setView}) => {
         username : username,
         password: password
       });
-      dispatch(login(username));
-      // console.log("Data from Login.jsx: ", data);
+      setView("home");
+      console.log("Data from Login.jsx: ", data.data.username);
+      dispatch(login(data.data.username));
 
     }
     catch(error){

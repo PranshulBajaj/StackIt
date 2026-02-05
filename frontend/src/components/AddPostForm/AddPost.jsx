@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import SimpleEditor from './SimpleEditor'
 import axios from "axios";
 import DOMPurify from 'dompurify';
+import {ToastContainer, toast} from "react-toastify";
 
 const AddPost = () => {
     const [loading, setLoading] = useState(false);
@@ -12,9 +13,20 @@ const AddPost = () => {
         tags: ''
     })
 
+    const notify = ()=>{
+        toast("All fields are required!",{
+            type : "warning"
+        });
+    }
+
     const handleSubmit = async(e)=>{
         e.preventDefault();
-        
+        const {title, desc, tags} = formData;
+        if(title === '' || desc=='' || tags===''){
+            notify();
+            return;
+        }
+
         setLoading(true);
         try{
             const {data} = await axios.post("/api/v1/questions/post",{
@@ -34,6 +46,7 @@ const AddPost = () => {
           }
           catch(error){
             console.log("Error from AddPost.jsx: ", error);
+            // notify();
           }
           finally{
             setLoading(false);
@@ -52,6 +65,8 @@ const AddPost = () => {
     return (
 
         <div className='formDiv text-black flex items-center justify-center bg-blue-800 w-full min-h-[584px]  px-8  h-full'>
+            <ToastContainer newestOnTop={true}
+ hideProgressBar={true}/>
             <div className='flex flex-col items-start w-[70%] px-10 py-10 rounded-lg my-[10px] bg-blue-200 gap-[10px] justify-center'>
                 <h1 className='text-3xl'>Ask your Question...</h1>
                 <form className='flex w-[100%] flex-col gap-5 justify-center' onSubmit={handleSubmit}>

@@ -74,12 +74,13 @@ const login = async(req, res)=>{
         secure: true
     }
 
-    const loggedInUser = User.findById(user._id).select("-password -refreshToken");
+    const loggedInUser = await User.findById(user._id).select("-password -refreshToken");
+
 
     return res.status(200)
               .cookie("accessToken", accessToken, options)
               .cookie("refreshToken", refreshToken, options)
-              .json(new ApiResponse(200, null, "Login Successful"))
+              .json(new ApiResponse(200, loggedInUser, "Login Successful"))
     
 }
 
@@ -107,10 +108,21 @@ const logout = async(req,res)=>{
               .json(new ApiResponse(200,{}, "Logged Out Successfully!"))
 }
 
+const getCurrentUser = (req,res)=>{
+    const user = req.user;
+
+    if(!user){
+        return;
+    }
+
+    return res.json({username : user.username});
+}
+
 export {
     register,
     login,
-    logout
+    logout,
+    getCurrentUser
 }
 
 
